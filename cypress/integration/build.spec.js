@@ -1,5 +1,12 @@
 describe('Testing the text filtering', () => {
-  beforeEach(() => cy.visit('https://alik0211.github.io/pokedex/'))
+  beforeEach(() =>
+    cy.visit('https://alik0211.github.io/pokedex/', {
+      onBeforeLoad(win) {
+        delete win.fetch
+      }
+    })
+  )
+
   it('Filters will all, some, none', () => {
     cy.get('ul.pokemons li.pokemons__item')
       .should('have.length', 784)

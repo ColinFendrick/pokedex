@@ -1,5 +1,13 @@
 describe('Testing the text filtering', () => {
-  beforeEach(() => cy.visit('/'))
+  beforeEach(() =>
+    cy.visit('/', {
+      onBeforeLoad: win => {
+        cy.stub(win, 'fetch')
+          .as('fetchPokemon')
+          .returns(() => Promise.resolve([]))
+      }
+    })
+  )
   it('Filters will all, some, none', () => {
     cy.get('ul.pokemons li.pokemons__item')
       .should('have.length', 784)
