@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing the page Has a matching snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="page"
+  >
+    <div
+      class="page__search"
+    >
+      <input
+        placeholder="Enter pokemon name..."
+        type="text"
+        value=""
+      />
+    </div>
+    <ul
+      class="pokemons"
+    />
+  </div>
+</DocumentFragment>
+`;
