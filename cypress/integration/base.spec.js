@@ -1,6 +1,12 @@
-describe('My First Test', () => {
-  beforeEach(() => cy.visit('/'))
-  it('Does not do much!', () => {
+describe('Testing the text filtering', () => {
+  beforeEach(() =>
+    cy
+      .server({
+        whitelist: xhr => xhr.method === 'GET' && false
+      })
+      .visit('/')
+  )
+  it('Filters will all, some, none', () => {
     cy.get('ul.pokemons li.pokemons__item')
       .should('have.length', 784)
       .get('input[placeholder="Enter pokemon name..."]')
@@ -11,5 +17,9 @@ describe('My First Test', () => {
       .type('{selectall}{backspace}zzzzzzz')
       .get('ul.pokemons li.pokemons__item')
       .should('have.length', 0)
+  })
+
+  it('Does stuff', () => {
+    expect(true).to.equal(true)
   })
 })
